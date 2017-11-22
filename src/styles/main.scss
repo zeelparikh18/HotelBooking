@@ -1,0 +1,28 @@
+@import "loader";
+
+@mixin hv-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$header-height: 50px;
+
+body {
+  margin: 0;
+}
+
+.gridContainer {
+  width: 100%;
+}
+
+.gridBody {
+  height: calc(100% - #{$header-height});
+  @include hv-center();
+}
+
+.header {
+  border-bottom: 1px solid #999;
+  //box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16);
+  height: $header-height;
+}
