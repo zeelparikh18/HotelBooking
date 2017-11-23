@@ -4,6 +4,8 @@ import React from 'react';
 import {getHumanizedDate} from './utils/index';
 
 const ONE_DAY = 24*60*60*1000;
+const NUM_OF_ROOMS = 6;
+const NUM_OF_DAYS = 15;
 
 class GridBody extends React.Component {
 
@@ -28,7 +30,7 @@ class GridBody extends React.Component {
                             <option value="maple">Maple</option>
                         </select>
                     </th>
-                    {Array.from(Array(15), this.renderDate)}
+                    {Array.from(Array(NUM_OF_DAYS), this.renderDate)}
                 </tr>
             </thead>
         );
@@ -38,7 +40,7 @@ class GridBody extends React.Component {
         const tds = [];
         const bookingInfo = this.props.data[this.state.roomType][roomNo+1];
         let j = 0;
-        for(let i = 0;i < 15; i++) {
+        for(let i = 0;i < NUM_OF_DAYS; i++) {
             let colSpan = 1, className = '', name = '';
             const date = new Date(this.props.startDate.getTime()+ONE_DAY*i);
             if(bookingInfo && j < bookingInfo.length && date.getTime() === bookingInfo[j].checkIn.getTime()) {
@@ -53,8 +55,7 @@ class GridBody extends React.Component {
         return tds;
     };
 
-    renderRoom = (val, roomNo) => {
-        const roomInfo = this.props.data[this.state.roomType];
+    renderRoomInfo = (val, roomNo) => {
         return (
           <tr key={`room-${roomNo}`}>
               <th>{roomNo + 1}</th>
@@ -63,10 +64,10 @@ class GridBody extends React.Component {
       );
     };
 
-    renderRooms() {
+    renderInfoByRooms() {
         return (
             <tbody>
-                {Array.from(Array(6), this.renderRoom)}
+                {Array.from(Array(NUM_OF_ROOMS), this.renderRoomInfo)}
             </tbody>
         );
     }
@@ -75,7 +76,7 @@ class GridBody extends React.Component {
         return (
             <table className={`bookingInfoTable bookingInfoTable--${this.props.direction}`}>
                 {this.renderTableHeads()}
-                {this.renderRooms()}
+                {this.renderInfoByRooms()}
             </table>
         )
     }

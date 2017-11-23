@@ -16,7 +16,7 @@ import './styles/main.scss';
 
 // constants
 const START_DATE = new Date('1-1-2017');
-const END_DATE = new Date('1-14-2017');
+const MOCK_API = "http://www.mocky.io/v2/5a16a3d0310000a71d8d332e";
 
 export default class App extends React.Component {
 
@@ -27,10 +27,9 @@ export default class App extends React.Component {
     };
 
     componentWillMount() {
-        httpGetAsync("http://www.mocky.io/v2/5a16a3d0310000a71d8d332e", (responseText) => {
-            const data = sortAndGroupDataByRoomType(responseText);
+        httpGetAsync(MOCK_API, (responseText) => {
             this.setState({
-                data,
+                data: sortAndGroupDataByRoomType(responseText),
                 isFetching: false
             });
         });
