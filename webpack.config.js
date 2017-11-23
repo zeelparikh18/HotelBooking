@@ -6,6 +6,7 @@ var SRC_DIR = path.resolve(__dirname, 'src');
 var BUILD_DIR = path.resolve(__dirname, 'public');
 
 var config = {
+    'devtool': 'inline-source-map',
     'entry': SRC_DIR + '/index.js',
     'output': {
         'path': BUILD_DIR,

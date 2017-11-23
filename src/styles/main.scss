@@ -7,22 +7,75 @@
 }
 
 $header-height: 50px;
+$row-height: 50px;
 
 body {
   margin: 0;
 }
 
+.bookingInfoTable {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  border-top: none;
+  table-layout: fixed;
+  width: 200%;
+
+  thead tr {
+    border-bottom: 1px solid #aaa;
+    border-top: none;
+    box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16);
+
+    th {
+      border: none;
+    }
+  }
+}
+
+table, th, td {
+  padding: 5px;
+  border: 1px dashed #999;
+}
+
+th, td {
+  height: $row-height;
+}
+
+th {
+  color: #666;
+  font-weight: 500;
+}
+
+
+select {
+  border: 0;
+  background: none;
+  font-size: 14px;
+  font-weight: bold;
+  &:focus {
+    outline: none;
+  }
+}
+
 .gridContainer {
+  overflow-x: hidden;
   width: 100%;
 }
 
 .gridBody {
   height: calc(100% - #{$header-height});
-  @include hv-center();
 }
 
 .header {
-  border-bottom: 1px solid #999;
-  //box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16);
+  border-bottom: 1px solid #aaa;
   height: $header-height;
+}
+
+.isBooked {
+  div {
+    background-color: #0eb550;
+    border-radius: $row-height/2;
+    height:100%;
+
+    @include hv-center();
+  }
 }
