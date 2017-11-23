@@ -37,7 +37,7 @@ th {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  width: 100px;
+  width: 145px;
 
   .button {
     cursor: pointer;
@@ -104,6 +104,7 @@ select {
   div {
     background-color: #0eb550;
     border-radius: $row-height/2;
+    color: white;
     height:100%;
 
     @include hv-center();
