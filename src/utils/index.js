@@ -5,11 +5,7 @@ const getNumberOfDays = (from, to) => Math.round(Math.abs((from.getTime() - to.g
 
 const getDateInStandardFormat = dateString => {
   const [day, month, year] = dateString.split('-');
-  return new Date([+year, +month, +day]);
-};
-
-const getDateString = dateObj => {
-    const date = dateObj.getDate();
+  return new Date(+year, (+month)-1, +day);
 };
 
 export const getHumanizedDate = dateObj => `${dateObj.getDate()} ${NUMBER_TO_DAY[dateObj.getDay()]}`;

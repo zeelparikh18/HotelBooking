@@ -40,20 +40,24 @@ class GridBody extends React.Component {
         const tds = [];
         const bookingInfo = this.props.data[this.state.roomType][roomNo+1];
         let j = 0;
-        for(let i = 0;i < NUM_OF_DAYS; i++) {
-            let colSpan = 1, className = '', name = '';
+        for(let i = 0; i < NUM_OF_DAYS; i++) {
+            let colSpan = 1, className = 'room', name = '';
             const date = new Date(this.props.startDate.getTime()+ONE_DAY*i);
+
+            // check if bookingInfo is available for current room
+            // then check, if we haven't already completed rendering all the bookings
+            // then check if the checkIn time of the booking is the same as the column date we are currently rendering
             if(bookingInfo && j < bookingInfo.length && date.getTime() === bookingInfo[j].checkIn.getTime()) {
-                className = 'isBooked';
+                className += ' room__isBooked';
                 colSpan = bookingInfo[j].numberOfDays;
                 name = bookingInfo[j].name;
-                i= i + colSpan - 1;
+                i = i + colSpan - 1;
                 j++;
             }
             tds.push(<td className={className} colSpan={colSpan}><div>{name}</div></td>)
         }
         return tds;
-    };
+    };gt
 
     renderRoomInfo = (val, roomNo) => {
         return (
@@ -74,7 +78,7 @@ class GridBody extends React.Component {
 
     render() {
         return (
-            <table className={`bookingInfoTable bookingInfoTable--${this.props.direction}`}>
+            <table className={`gridTable gridTable--${this.props.direction}`}>
                 {this.renderTableHeads()}
                 {this.renderInfoByRooms()}
             </table>

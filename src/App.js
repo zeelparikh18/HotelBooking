@@ -15,7 +15,7 @@ import {
 import './styles/main.scss';
 
 // constants
-const START_DATE = new Date('1-1-2017');
+const START_DATE = new Date(2017, 0, 1);
 const MOCK_API = "http://www.mocky.io/v2/5a16a3d0310000a71d8d332e";
 
 export default class App extends React.Component {
