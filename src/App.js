@@ -21,19 +21,25 @@ const END_DATE = new Date('1-14-2017');
 export default class App extends React.Component {
 
     state = {
-      'isFetching': true
+        'isFetching': true,
+        'data': {},
+        'direction': ''
     };
 
     componentWillMount() {
         httpGetAsync("http://www.mocky.io/v2/5a16a3d0310000a71d8d332e", (responseText) => {
             const data = sortAndGroupDataByRoomType(responseText);
-            console.log(data);
             this.setState({
                 data,
                 isFetching: false
             });
         });
     }
+
+    handleArrowClick = e => {
+        const direction = e.target.dataset.dir;
+        this.setState({direction});
+    };
 
     renderGridBody() {
         if(this.state.isFetching){
@@ -43,7 +49,7 @@ export default class App extends React.Component {
             <GridBody
                 data={this.state.data}
                 startDate={START_DATE}
-                endDate={END_DATE}
+                direction={this.state.direction}
             />
         );
     }
@@ -51,7 +57,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="gridContainer">
-                <Header />
+                <Header onClick={this.handleArrowClick} />
                 <div className="gridBody">
                     {this.renderGridBody()}
                 </div>

@@ -63,11 +63,27 @@ select {
 
 .gridBody {
   height: calc(100% - #{$header-height});
+  width: 100%;
+
+  @include hv-center();
 }
 
 .header {
   border-bottom: 1px solid #aaa;
   height: $header-height;
+}
+
+.navigate {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100px;
+
+  .button {
+    cursor: pointer;
+    font-size: 20px;
+  }
 }
 
 .isBooked {
@@ -77,5 +93,18 @@ select {
     height:100%;
 
     @include hv-center();
+  }
+}
+
+.bookingInfoTable {
+  transform: translateX(0%);
+  transition: transform 1000ms ease-in-out;
+
+  &--next {
+    transform: translateX(-50%);
+  }
+
+  &--prev {
+    transform: translateX(0%);
   }
 }

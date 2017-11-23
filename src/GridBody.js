@@ -73,7 +73,7 @@ class GridBody extends React.Component {
 
     render() {
         return (
-            <table className="bookingInfoTable">
+            <table className={`bookingInfoTable bookingInfoTable--${this.props.direction}`}>
                 {this.renderTableHeads()}
                 {this.renderRooms()}
             </table>
