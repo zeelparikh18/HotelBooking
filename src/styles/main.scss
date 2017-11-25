@@ -13,13 +13,11 @@ body {
   margin: 0;
 }
 
-table, th, td {
-  padding: 5px;
-  border: 1px dashed #999;
-}
-
 th, td {
+  border-bottom: 1px dashed #999;
+  border-right: 1px dashed #999;
   height: $row-height;
+  padding: 5px;
 }
 
 th {
@@ -53,6 +51,7 @@ th {
 
 .gridBody {
   height: calc(100% - #{$header-height});
+  min-height: 400px;
   width: 100%;
 
   @include hv-center();
@@ -60,9 +59,7 @@ th {
 
 
 .gridTable {
-  border-collapse: collapse;
   border-spacing: 0px;
-  border-top: none;
   table-layout: fixed;
   width: 200%;
 
@@ -78,14 +75,13 @@ th {
   }
 
   thead tr {
-    border-bottom: 1px solid #aaa;
-    border-top: none;
     -webkit-box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16); /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16);  /* Firefox 3.5 - 3.6 */
     box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.16);
 
-    th {
+    th, td {
       border: none;
+      border-bottom: 1px solid #aaa;
     }
   }
 }
